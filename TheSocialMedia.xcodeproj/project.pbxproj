@@ -14,6 +14,7 @@
 		BD0A43B729DB8F61003536E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD0A43B629DB8F61003536E1 /* GoogleService-Info.plist */; };
 		BD0A43BA29DB9047003536E1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BD0A43B929DB9047003536E1 /* FirebaseAuth */; };
 		BD0A43BE29DB9724003536E1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0A43BD29DB9724003536E1 /* LoginView.swift */; };
+		BD0A43C029DB9F33003536E1 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0A43BF29DB9F33003536E1 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		BD0A43AF29DB8007003536E1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BD0A43B629DB8F61003536E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BD0A43BD29DB9724003536E1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BD0A43BF29DB9F33003536E1 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			children = (
 				BD0A43AA29DB8006003536E1 /* MainView.swift */,
 				BD0A43BD29DB9724003536E1 /* LoginView.swift */,
+				BD0A43BF29DB9F33003536E1 /* RegisterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD0A43BE29DB9724003536E1 /* LoginView.swift in Sources */,
+				BD0A43C029DB9F33003536E1 /* RegisterView.swift in Sources */,
 				BD0A43AB29DB8006003536E1 /* MainView.swift in Sources */,
 				BD0A43A929DB8006003536E1 /* TheSocialMediaApp.swift in Sources */,
 			);

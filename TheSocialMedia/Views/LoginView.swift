@@ -10,6 +10,8 @@ import SwiftUI
 struct LoginView: View {
     @State var email: String = ""
     @State var password: String = ""
+    @State var createNewAccount: Bool = false
+    //@State var existingAccount: Bool = false
     
     var body: some View {
         VStack(spacing: 10) {
@@ -56,7 +58,7 @@ struct LoginView: View {
                     .foregroundColor(.secondary)
                 
                 Button("Register") {
-                    
+                    createNewAccount.toggle()
                 }
                 .fontWeight(.bold)
                 .foregroundColor(.accentColor)
@@ -66,6 +68,9 @@ struct LoginView: View {
         }
         .vAlign(.top)
         .padding(15)
+        .fullScreenCover(isPresented: $createNewAccount) {
+            RegisterView()
+        }
     }
 }
 
