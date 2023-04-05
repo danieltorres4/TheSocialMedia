@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestore
+import FirebaseStorage
 
 struct LoginView: View {
     @State var email: String = ""
@@ -14,6 +16,12 @@ struct LoginView: View {
     @State var createNewAccount: Bool = false
     @State var showError: Bool = false
     @State var errorMessage: String = ""
+    @State var isLoading: Bool = false
+    
+    @AppStorage("log_status") var logStatus: Bool = false
+    @AppStorage("user_profile_url") var profileURL: URL?
+    @AppStorage("user_name") var usernameStored: String = ""
+    @AppStorage("user_UID") var userUID: String = ""
     
     var body: some View {
         VStack(spacing: 10) {
@@ -72,6 +80,9 @@ struct LoginView: View {
         }
         .vAlign(.top)
         .padding(15)
+        .overlay(content: {
+            LoadingView(show: $isLoading)
+        })
         .fullScreenCover(isPresented: $createNewAccount) {
             RegisterView()
         }
@@ -79,14 +90,30 @@ struct LoginView: View {
     }
     
     func loginUser() {
+        isLoading = true
+        closeKeyboard()
+        
         Task {
             do {
                 try await Auth.auth().signIn(withEmail: email, password: password)
                 print("User logged...")
+                try await fetchUser()
             } catch {
                 await setError(error)
             }
         }
+    }
+    
+    func fetchUser() async throws {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        let user = try await Firestore.firestore().collection("Users").document(userID).getDocument(as: User.self)
+        
+        await MainActor.run(body: {
+            userUID = userID
+            usernameStored = user.username
+            profileURL = user.userProfileURL
+            logStatus = true
+        })
     }
     
     func resetPassword() {
@@ -105,6 +132,7 @@ struct LoginView: View {
         await MainActor.run(body: {
             errorMessage = error.localizedDescription
             showError.toggle()
+            isLoading = false
         })
     }
 }
@@ -116,6 +144,10 @@ struct LoginView_Previews: PreviewProvider {
 }
 
 extension View {
+    func closeKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
     func disableWithOpacity(_ condition: Bool) -> some View {
         self.disabled(condition).opacity(condition ? 0.6 : 1)
     }

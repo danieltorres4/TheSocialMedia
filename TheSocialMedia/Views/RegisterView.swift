@@ -24,6 +24,12 @@ struct RegisterView: View {
     
     @State var showError: Bool = false
     @State var errorMessage: String = ""
+    @State var isLoading: Bool = false
+    
+    @AppStorage("log_status") var logStatus: Bool = false
+    @AppStorage("user_profile_url") var profileURL: URL?
+    @AppStorage("user_name") var usernameStored: String = ""
+    @AppStorage("user_UID") var userUID: String = ""
     
     @Environment(\.dismiss) var dismiss
     
@@ -63,6 +69,9 @@ struct RegisterView: View {
         }
         .vAlign(.top)
         .padding(15)
+        .overlay(content: {
+            LoadingView(show: $isLoading)
+        })
         .photosPicker(isPresented: $showImagePicker, selection: $photoItem)
         .onChange(of: photoItem) { newValue in
             /// extracting UIImage
@@ -142,6 +151,9 @@ struct RegisterView: View {
     }
     
     func registerNewUser() {
+        isLoading = true
+        closeKeyboard()
+        
         Task {
             do {
                 /// Creating a new user account
@@ -159,6 +171,10 @@ struct RegisterView: View {
                 let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user, completion: { error in
                     if error == nil {
                         print("A user has been created succesfully...")
+                        usernameStored = username
+                        self.userUID = userUID
+                        profileURL = downloadURL
+                        logStatus = true
                     }
                 })
                 
@@ -174,6 +190,7 @@ struct RegisterView: View {
         await MainActor.run(body: {
             errorMessage = error.localizedDescription
             showError.toggle()
+            isLoading = false
         })
     }
 }
