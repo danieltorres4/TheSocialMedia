@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct ReusableProfileContent: View {
     var user: User
+    @State var showWebView = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
@@ -35,16 +36,24 @@ struct ReusableProfileContent: View {
                             .lineLimit(4)
                         
                         if let bioLink = URL(string: user.userBioLink) {
+                            /*
                             Link(user.userBioLink, destination: bioLink)
                                 .font(.callout)
                                 .tint(.blue)
                                 .lineLimit(1)
+                             */
+                            Button("\(user.userBioLink)") {
+                                showWebView = true
+                            }
+                            .sheet(isPresented: $showWebView) {
+                                WebView(url: user.userBioLink)
+                            }
                         }
                     }
                     .hAlign(.leading)
                 }
                 
-                Text("Your Posts")
+                Text("All Posts")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundColor(.secondary)
