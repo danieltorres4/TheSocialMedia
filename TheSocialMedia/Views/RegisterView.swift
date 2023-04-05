@@ -7,6 +7,9 @@
 
 import SwiftUI
 import PhotosUI
+import Firebase
+import FirebaseFirestore
+import FirebaseStorage
 
 struct RegisterView: View {
     @State var email: String = ""
@@ -18,6 +21,9 @@ struct RegisterView: View {
     
     @State var showImagePicker: Bool = false
     @State var photoItem: PhotosPickerItem?
+    
+    @State var showError: Bool = false
+    @State var errorMessage: String = ""
     
     @Environment(\.dismiss) var dismiss
     
@@ -73,6 +79,7 @@ struct RegisterView: View {
                 }
             }
         }
+        .alert(errorMessage, isPresented: $showError, actions: {  })
     }
     
     @ViewBuilder
@@ -122,15 +129,52 @@ struct RegisterView: View {
                 .border(1, .gray.opacity(0.5))
             
             Button {
-                
+                registerNewUser()
             } label: {
                 Text("Done")
                     .foregroundColor(.white)
                     .hAlign(.center)
                     .fillView(.accentColor)
             }
+            .disableWithOpacity(username == "" || userBio == "" || email == "" || password == "" || userProfilePictureData == nil)
             .padding(.top, 10)
         }
+    }
+    
+    func registerNewUser() {
+        Task {
+            do {
+                /// Creating a new user account
+                try await Auth.auth().createUser(withEmail: email, password: password)
+                
+                /// Uploading the profile image to Firebase and Downloading image URL
+                guard let userUID = Auth.auth().currentUser?.uid else { return }
+                guard let imageData = userProfilePictureData else { return }
+                let storageRef = Storage.storage().reference().child("Profile_Images").child(userUID)
+                let _ = try await storageRef.putDataAsync(imageData)
+                let downloadURL = try await storageRef.downloadURL()
+                
+                /// Creating a new user object and saving it
+                let user = User(username: username, userBio: userBio, userBioLink: userBioLink, userID: userUID, userEmail: email, userProfileURL: downloadURL)
+                let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user, completion: { error in
+                    if error == nil {
+                        print("A user has been created succesfully...")
+                    }
+                })
+                
+            } catch {
+                //try await Auth.auth().currentUser?.delete()
+                await setError(error)
+            }
+        }
+    }
+    
+    /// The error message will be show as an alert
+    func setError(_ error: Error) async {
+        await MainActor.run(body: {
+            errorMessage = error.localizedDescription
+            showError.toggle()
+        })
     }
 }
 

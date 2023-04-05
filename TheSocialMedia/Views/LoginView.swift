@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginView: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var createNewAccount: Bool = false
-    //@State var existingAccount: Bool = false
+    @State var showError: Bool = false
+    @State var errorMessage: String = ""
     
     var body: some View {
         VStack(spacing: 10) {
@@ -37,13 +39,15 @@ struct LoginView: View {
                     .textInputAutocapitalization(.never)
                     .border(1, .gray.opacity(0.5))
                 
-                Button("Forgot password?", action: {  })
+                Button("Forgot password?", action: {
+                    resetPassword()
+                })
                     .font(.callout)
                     .fontWeight(.medium)
                     .hAlign(.trailing)
                 
                 Button {
-                    
+                    loginUser()
                 } label: {
                     Text("Login")
                         .foregroundColor(.white)
@@ -71,6 +75,37 @@ struct LoginView: View {
         .fullScreenCover(isPresented: $createNewAccount) {
             RegisterView()
         }
+        .alert(errorMessage, isPresented: $showError, actions: {  })
+    }
+    
+    func loginUser() {
+        Task {
+            do {
+                try await Auth.auth().signIn(withEmail: email, password: password)
+                print("User logged...")
+            } catch {
+                await setError(error)
+            }
+        }
+    }
+    
+    func resetPassword() {
+        Task {
+            do {
+                try await Auth.auth().sendPasswordReset(withEmail: email)
+                print("Password is gonna be reseted...")
+            } catch {
+                await setError(error)
+            }
+        }
+    }
+    
+    /// The error message will be show as an alert
+    func setError(_ error: Error) async {
+        await MainActor.run(body: {
+            errorMessage = error.localizedDescription
+            showError.toggle()
+        })
     }
 }
 
@@ -81,6 +116,10 @@ struct LoginView_Previews: PreviewProvider {
 }
 
 extension View {
+    func disableWithOpacity(_ condition: Bool) -> some View {
+        self.disabled(condition).opacity(condition ? 0.6 : 1)
+    }
+    
     func hAlign(_ alignment: Alignment) -> some View {
         self.frame(maxWidth: .infinity, alignment: alignment)
     }
