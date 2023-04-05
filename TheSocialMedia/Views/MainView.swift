@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct MainView: View {
-    @AppStorage("log_status") var logStatus: Bool = false
     
     var body: some View {
-        if logStatus {
-            Text("MainView")
-        } else {
-            LoginView()
+        TabView {
+            Text("Recent Posts")
+                .tabItem {
+                    Image(systemName: "newspaper")
+                    Text("Posts")
+                }
+            
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("Profile")
+                }
         }
+        .tint(.accentColor)
     }
 }
 
