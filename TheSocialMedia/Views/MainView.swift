@@ -11,7 +11,7 @@ struct MainView: View {
     
     var body: some View {
         TabView {
-            Text("Recent Posts")
+            PostsView()
                 .tabItem {
                     Image(systemName: "newspaper")
                     Text("Posts")

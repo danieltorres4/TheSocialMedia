@@ -26,6 +26,9 @@
 		BDB1FDC029DD28FC00652989 /* ReusableProfileContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1FDBF29DD28FC00652989 /* ReusableProfileContent.swift */; };
 		BDB1FDC329DD2B7B00652989 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BDB1FDC229DD2B7B00652989 /* SDWebImageSwiftUI */; };
 		BDB1FDC529DD319E00652989 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1FDC429DD319E00652989 /* WebView.swift */; };
+		BDD1F30529E476D900CE6F4F /* CreateNewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30429E476D900CE6F4F /* CreateNewPostView.swift */; };
+		BDD1F30729E4770600CE6F4F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30629E4770600CE6F4F /* Post.swift */; };
+		BDD1F30929E4B77B00CE6F4F /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30829E4B77B00CE6F4F /* PostsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		BDB1FDBD29DD113200652989 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BDB1FDBF29DD28FC00652989 /* ReusableProfileContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProfileContent.swift; sourceTree = "<group>"; };
 		BDB1FDC429DD319E00652989 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		BDD1F30429E476D900CE6F4F /* CreateNewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPostView.swift; sourceTree = "<group>"; };
+		BDD1F30629E4770600CE6F4F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		BDD1F30829E4B77B00CE6F4F /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,8 @@
 				BDB1FDBB29DD0EE600652989 /* ContentView.swift */,
 				BDB1FDBD29DD113200652989 /* ProfileView.swift */,
 				BDB1FDBF29DD28FC00652989 /* ReusableProfileContent.swift */,
+				BDD1F30429E476D900CE6F4F /* CreateNewPostView.swift */,
+				BDD1F30829E4B77B00CE6F4F /* PostsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -119,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB1FDB429DCD7E500652989 /* User.swift */,
+				BDD1F30629E4770600CE6F4F /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -221,9 +230,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDD1F30929E4B77B00CE6F4F /* PostsView.swift in Sources */,
 				BD0A43BE29DB9724003536E1 /* LoginView.swift in Sources */,
 				BDB1FDBE29DD113200652989 /* ProfileView.swift in Sources */,
 				BDB1FDC029DD28FC00652989 /* ReusableProfileContent.swift in Sources */,
+				BDD1F30529E476D900CE6F4F /* CreateNewPostView.swift in Sources */,
+				BDD1F30729E4770600CE6F4F /* Post.swift in Sources */,
 				BD0A43C029DB9F33003536E1 /* RegisterView.swift in Sources */,
 				BDB1FDBC29DD0EE600652989 /* ContentView.swift in Sources */,
 				BD0A43AB29DB8006003536E1 /* MainView.swift in Sources */,
