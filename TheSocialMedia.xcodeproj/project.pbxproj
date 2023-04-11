@@ -29,6 +29,8 @@
 		BDD1F30529E476D900CE6F4F /* CreateNewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30429E476D900CE6F4F /* CreateNewPostView.swift */; };
 		BDD1F30729E4770600CE6F4F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30629E4770600CE6F4F /* Post.swift */; };
 		BDD1F30929E4B77B00CE6F4F /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30829E4B77B00CE6F4F /* PostsView.swift */; };
+		BDD1F30B29E4C14300CE6F4F /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30A29E4C14300CE6F4F /* ReusablePostsView.swift */; };
+		BDD1F30D29E4CF9F00CE6F4F /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30C29E4CF9F00CE6F4F /* PostCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		BDD1F30429E476D900CE6F4F /* CreateNewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPostView.swift; sourceTree = "<group>"; };
 		BDD1F30629E4770600CE6F4F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BDD1F30829E4B77B00CE6F4F /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
+		BDD1F30A29E4C14300CE6F4F /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
+		BDD1F30C29E4CF9F00CE6F4F /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,8 @@
 				BDB1FDBF29DD28FC00652989 /* ReusableProfileContent.swift */,
 				BDD1F30429E476D900CE6F4F /* CreateNewPostView.swift */,
 				BDD1F30829E4B77B00CE6F4F /* PostsView.swift */,
+				BDD1F30C29E4CF9F00CE6F4F /* PostCardView.swift */,
+				BDD1F30A29E4C14300CE6F4F /* ReusablePostsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,8 +244,10 @@
 				BDD1F30729E4770600CE6F4F /* Post.swift in Sources */,
 				BD0A43C029DB9F33003536E1 /* RegisterView.swift in Sources */,
 				BDB1FDBC29DD0EE600652989 /* ContentView.swift in Sources */,
+				BDD1F30D29E4CF9F00CE6F4F /* PostCardView.swift in Sources */,
 				BD0A43AB29DB8006003536E1 /* MainView.swift in Sources */,
 				BDB1FDBA29DD0D6800652989 /* View+Extensions.swift in Sources */,
+				BDD1F30B29E4C14300CE6F4F /* ReusablePostsView.swift in Sources */,
 				BDB1FDB529DCD7E500652989 /* User.swift in Sources */,
 				BD0A43A929DB8006003536E1 /* TheSocialMediaApp.swift in Sources */,
 				BDB1FDB729DCF57A00652989 /* LoadingView.swift in Sources */,
