@@ -31,6 +31,7 @@
 		BDD1F30929E4B77B00CE6F4F /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30829E4B77B00CE6F4F /* PostsView.swift */; };
 		BDD1F30B29E4C14300CE6F4F /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30A29E4C14300CE6F4F /* ReusablePostsView.swift */; };
 		BDD1F30D29E4CF9F00CE6F4F /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30C29E4CF9F00CE6F4F /* PostCardView.swift */; };
+		BDD1F30F29E5D17D00CE6F4F /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30E29E5D17D00CE6F4F /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		BDD1F30829E4B77B00CE6F4F /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		BDD1F30A29E4C14300CE6F4F /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
 		BDD1F30C29E4CF9F00CE6F4F /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardView.swift; sourceTree = "<group>"; };
+		BDD1F30E29E5D17D00CE6F4F /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				BDD1F30829E4B77B00CE6F4F /* PostsView.swift */,
 				BDD1F30C29E4CF9F00CE6F4F /* PostCardView.swift */,
 				BDD1F30A29E4C14300CE6F4F /* ReusablePostsView.swift */,
+				BDD1F30E29E5D17D00CE6F4F /* SplashScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDD1F30F29E5D17D00CE6F4F /* SplashScreenView.swift in Sources */,
 				BDD1F30929E4B77B00CE6F4F /* PostsView.swift in Sources */,
 				BD0A43BE29DB9724003536E1 /* LoginView.swift in Sources */,
 				BDB1FDBE29DD113200652989 /* ProfileView.swift in Sources */,
