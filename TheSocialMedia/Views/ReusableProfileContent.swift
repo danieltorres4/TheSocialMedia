@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct ReusableProfileContent: View {
     var user: User
     @State var showWebView = false
+    @State private var fetchdPosts: [Post] = []
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
@@ -59,6 +60,8 @@ struct ReusableProfileContent: View {
                     .foregroundColor(.secondary)
                     .hAlign(.leading)
                     .padding(.vertical, 15)
+                
+                ReusablePostsView(basedOnUID: true, uid: user.userID, posts: $fetchdPosts)
             }
             .padding(15)
         }

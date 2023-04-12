@@ -28,6 +28,17 @@ struct PostsView: View {
                     }
                     .padding(15)
                 }
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            SearchUsersView()
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                                .tint(.accentColor)
+                                .scaleEffect(0.9)
+                        }
+                    }
+                })
                 .navigationTitle("Recent Posts")
         }
         .fullScreenCover(isPresented: $createNewPost) {

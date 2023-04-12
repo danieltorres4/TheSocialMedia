@@ -10,8 +10,10 @@ import Firebase
 import FirebaseFirestore
 
 struct ReusablePostsView: View {
+    var basedOnUID: Bool = false
+    var uid: String = ""
     @Binding var posts: [Post]
-    @State var isFetching: Bool = true
+    @State private var isFetching: Bool = true
     
     /// Pagination
     @State private var paginationDoc: QueryDocumentSnapshot?
@@ -37,8 +39,13 @@ struct ReusablePostsView: View {
             .padding(15)
         }
         .refreshable {
+            guard !basedOnUID else { return } /// Refresh feature is disable for UID based posts
             isFetching = true
             posts = []
+            
+            /// Setting to nil when the user refreshes. After refreshing the view, the view will show the most recent posts.
+            paginationDoc = nil
+            
             await fetchPosts()
         }
         .task {
@@ -88,6 +95,11 @@ struct ReusablePostsView: View {
                 query = Firestore.firestore().collection("Posts").order(by: "publishedDate", descending: true).start(afterDocument: paginationDoc).limit(to: 5)
             } else {
                 query = Firestore.firestore().collection("Posts").order(by: "publishedDate", descending: true).limit(to: 5)
+            }
+            
+            /// For UID Based Document. Simple filter to find the user's posts based on the UID
+            if basedOnUID {
+                query = query.whereField("userID", isEqualTo: uid)
             }
             
             let docs = try await query.getDocuments()
