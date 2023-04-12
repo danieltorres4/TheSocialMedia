@@ -32,6 +32,7 @@
 		BDD1F30B29E4C14300CE6F4F /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30A29E4C14300CE6F4F /* ReusablePostsView.swift */; };
 		BDD1F30D29E4CF9F00CE6F4F /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30C29E4CF9F00CE6F4F /* PostCardView.swift */; };
 		BDD1F30F29E5D17D00CE6F4F /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F30E29E5D17D00CE6F4F /* SplashScreenView.swift */; };
+		BDD1F31129E7214200CE6F4F /* SearchUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1F31029E7214200CE6F4F /* SearchUsersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		BDD1F30A29E4C14300CE6F4F /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
 		BDD1F30C29E4CF9F00CE6F4F /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardView.swift; sourceTree = "<group>"; };
 		BDD1F30E29E5D17D00CE6F4F /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		BDD1F31029E7214200CE6F4F /* SearchUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				BDD1F30C29E4CF9F00CE6F4F /* PostCardView.swift */,
 				BDD1F30A29E4C14300CE6F4F /* ReusablePostsView.swift */,
 				BDD1F30E29E5D17D00CE6F4F /* SplashScreenView.swift */,
+				BDD1F31029E7214200CE6F4F /* SearchUsersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				BDD1F30729E4770600CE6F4F /* Post.swift in Sources */,
 				BD0A43C029DB9F33003536E1 /* RegisterView.swift in Sources */,
 				BDB1FDBC29DD0EE600652989 /* ContentView.swift in Sources */,
+				BDD1F31129E7214200CE6F4F /* SearchUsersView.swift in Sources */,
 				BDD1F30D29E4CF9F00CE6F4F /* PostCardView.swift in Sources */,
 				BD0A43AB29DB8006003536E1 /* MainView.swift in Sources */,
 				BDB1FDBA29DD0D6800652989 /* View+Extensions.swift in Sources */,

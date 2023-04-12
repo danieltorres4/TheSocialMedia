@@ -13,6 +13,9 @@ struct ReusablePostsView: View {
     @Binding var posts: [Post]
     @State var isFetching: Bool = true
     
+    /// Pagination
+    @State private var paginationDoc: QueryDocumentSnapshot?
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack {
@@ -62,6 +65,15 @@ struct ReusablePostsView: View {
                     posts.removeAll { post.id == $0.id}
                 }
             }
+            .onAppear {
+                /// When the last posts has been appeared, we'll fetch a new one if it exists
+                if post.id == posts.last?.id && paginationDoc != nil {
+                    /// Checking that pagination isn't nil to ensure that there are posts to fetch
+                    Task {
+                        await fetchPosts()
+                    }
+                }
+            }
             
             Divider()
                 .padding(.horizontal, -15)
@@ -71,7 +83,12 @@ struct ReusablePostsView: View {
     func fetchPosts() async {
         do {
             var query: Query!
-            query = Firestore.firestore().collection("Posts").order(by: "publishedDate", descending: true).limit(to: 20)
+            
+            if let paginationDoc {
+                query = Firestore.firestore().collection("Posts").order(by: "publishedDate", descending: true).start(afterDocument: paginationDoc).limit(to: 5)
+            } else {
+                query = Firestore.firestore().collection("Posts").order(by: "publishedDate", descending: true).limit(to: 5)
+            }
             
             let docs = try await query.getDocuments()
             let fetchedPosts = docs.documents.compactMap { doc -> Post? in
@@ -79,7 +96,9 @@ struct ReusablePostsView: View {
             }
             
             await MainActor.run(body: {
-                posts = fetchedPosts
+                posts.append(contentsOf: fetchedPosts)
+                /// Saving the last fetched document in order to be used for pagination
+                paginationDoc = docs.documents.last
                 isFetching = false
             })
             
