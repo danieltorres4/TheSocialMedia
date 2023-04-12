@@ -149,12 +149,12 @@ struct CreateNewPostView: View {
                     let downloadURL = try await storageRef.downloadURL()
                     
                     /// Creating a post
-                    let post = Post(text: postContent, imageURL: downloadURL, imageReferenceID: imageReferenceID, userName: username, userUID: userUID, userProfileURL: profileURL)
+                    let post = Post(text: postContent, imageURL: downloadURL, imageReferenceID: imageReferenceID, userName: username, userID: userUID, userProfileURL: profileURL)
                     
                     try await createDocumentAtFirebase(post)
                 } else {
                     /// Directly published the post to firebase
-                    let post = Post(text: postContent, userName: username, userUID: userUID, userProfileURL: profileURL)
+                    let post = Post(text: postContent, userName: username, userID: userUID, userProfileURL: profileURL)
                     try await createDocumentAtFirebase(post)
                 }
             } catch {

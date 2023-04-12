@@ -24,7 +24,7 @@ struct Post: Identifiable, Codable, Equatable, Hashable {
     
     /// Post's author basic info
     var userName: String
-    var userUID: String
+    var userID: String
     var userProfileURL: URL
     
     enum CodingKeys: CodingKey {
@@ -36,7 +36,7 @@ struct Post: Identifiable, Codable, Equatable, Hashable {
         case likedIDs
         case clappedIDs
         case userName
-        case userUID
+        case userID
         case userProfileURL
     }
 }

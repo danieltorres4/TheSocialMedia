@@ -58,7 +58,7 @@ struct PostCardView: View {
         .hAlign(.leading)
         .overlay(alignment: .topTrailing, content: {
             /// Displaying a delete button of every personal post
-            if post.userUID == userUID {
+            if post.userID == userUID {
                 Menu {
                     Button("Delete Post", role: .destructive, action: { deletePost() })
                 } label: {
